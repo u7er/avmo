@@ -84,9 +84,10 @@ const Fraction Fraction::operator-(const Fraction &fraction) const {
 
     int gcd = temp.gcd(temp.m_numerator, temp.m_denominator);
 
-    temp.m_numerator = temp.m_numerator / gcd;
-    temp.m_denominator = temp.m_denominator / gcd;
-
+    if (gcd > 0) {
+        temp.m_numerator = temp.m_numerator / gcd;
+        temp.m_denominator = temp.m_denominator / gcd;
+    }
     return temp;
 }
 
@@ -96,26 +97,25 @@ const Fraction Fraction::operator*(const Fraction &fraction) const {
     temp.m_denominator = (this->m_denominator) * (fraction.m_denominator);
 
     int gcd = temp.gcd(temp.m_numerator, temp.m_denominator);
-
-    temp.m_numerator = temp.m_numerator / gcd;
-    temp.m_denominator = temp.m_denominator / gcd;
-
+    if (gcd > 0) {
+        temp.m_numerator = temp.m_numerator / gcd;
+        temp.m_denominator = temp.m_denominator / gcd;
+    }
     return temp;
 }
 
 const Fraction Fraction::operator/(const Fraction &fraction) const {
-    if (fraction.m_numerator == 0) {
-        std::cout << "Error! Can not divied for 0\n";
-        exit(-1);
-    } else {
+    if (!fraction.m_numerator == 0) {
         Fraction temp{0, 1};
         temp.m_numerator = (this->m_numerator) * (fraction.m_denominator);
         temp.m_denominator = (this->m_denominator) * (fraction.m_numerator);
 
         int gcd = temp.gcd(temp.m_numerator, temp.m_denominator);
 
-        temp.m_numerator = temp.m_numerator / gcd;
-        temp.m_denominator = temp.m_denominator / gcd;
+        if (gcd > 0) {
+            temp.m_numerator = temp.m_numerator / gcd;
+            temp.m_denominator = temp.m_denominator / gcd;
+        }
 
         return temp;
     }
@@ -298,6 +298,7 @@ std::istream &operator>>(std::istream &input, Fraction &fraction) {
 }
 
 std::ostream &operator<<(std::ostream &output, const Fraction &fraction) {
+    if (fraction.m_denominator == 0) return output;
     if (fraction.m_numerator % fraction.m_denominator == 0) {
         output << (fraction.m_numerator / fraction.m_denominator);
     } else {
