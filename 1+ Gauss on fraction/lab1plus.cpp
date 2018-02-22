@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#include "Fraction.h"
 
 using namespace std;
 
@@ -10,9 +9,9 @@ int main() {
     ist >> x;
     y = x + 1;
 
-    Fraction arr[x][y];
-    Fraction ans[x];
-    Fraction temp1, temp2, temp3, temp4;
+    int arr[x][y];
+    int ans[x];
+    int temp1, temp2, temp3, temp4;
 
     for (int i = 0; i < x; ++i)
         for (int j = 0; j < y; ++j)

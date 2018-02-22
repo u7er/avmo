@@ -7,8 +7,8 @@ set(CMAKE_CXX_STANDARD 14)
 # Lab 1+
 set(SOURCE_FILES
         "1+ Gauss on fraction/lab1plus.cpp"
-        "1+ Gauss on fraction/Fraction.cpp"
-        "1+ Gauss on fraction/Fraction.h"
+        "2+ Fraction/Fraction.cpp"
+        "2+ Fraction/Fraction.h"
         )
 add_executable(lab1+ ${SOURCE_FILES})
 
@@ -18,3 +18,11 @@ set(SOURCE_FILES
         "1. Gauss/gauss.cpp"
         )
 add_executable(lab2 ${SOURCE_FILES})
+
+# Lab 2+
+set(SOURCE_FILES
+        "2+ Fraction/fract_main.cpp"
+        "2+ Fraction/Fraction.cpp"
+        "2+ Fraction/Fraction.h"
+        )
+add_executable(lab2+ ${SOURCE_FILES})
