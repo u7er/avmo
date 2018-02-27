@@ -298,7 +298,10 @@ std::istream &operator>>(std::istream &input, Fraction &fraction) {
 }
 
 std::ostream &operator<<(std::ostream &output, const Fraction &fraction) {
-    if (fraction.m_denominator == 0) return output;
+    if (fraction.m_denominator == 0) {
+        output << 0;
+        return output;
+    }
     if (fraction.m_numerator % fraction.m_denominator == 0) {
         output << (fraction.m_numerator / fraction.m_denominator);
     } else {
@@ -318,6 +321,11 @@ const Fraction operator+(const int &number, const Fraction &fraction) {
 }
 
 const Fraction operator-(const int &number, const Fraction &fraction) {
+    if (fraction.m_denominator == 1 && fraction.m_numerator == 0) {
+        Fraction temp{number * (-1), 1};
+        return temp;
+    }
+
     Fraction temp{0, 1};
     temp.m_numerator = number * (fraction.m_denominator) - (fraction.m_numerator);
     temp.m_denominator = fraction.m_denominator;

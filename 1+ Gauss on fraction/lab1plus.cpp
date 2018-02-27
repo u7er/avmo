@@ -20,9 +20,10 @@ int main() {
 
     for (int i = 0; i < x; ++i) {
         for (int j = 0; j < y; ++j)
-            cout << arr[i][j];
-        cout << endl;
+            ost << arr[i][j] << " ";
+        ost << endl;
     }
+    ost << endl;
 
     for (int i = 0; i < y - 2; ++i) {
         for (int j = i + 1; j < x; ++j) {
@@ -40,6 +41,7 @@ int main() {
         ost << endl;
     }
     for (int i = x - 1; i >= 0; --i) {
+        ans[i] = 0;
         ans[i] = arr[i][y - 1] / arr[i][i];
         for (int j = 0; j < i; ++j) {
             arr[j][y - 1] -= arr[j][i] * ans[i];
