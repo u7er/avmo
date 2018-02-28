@@ -70,10 +70,10 @@ const Fraction Fraction::operator+(const Fraction &fraction) const {
     temp.m_denominator = (this->m_denominator) * (fraction.m_denominator);
 
     int gcd = temp.gcd(temp.m_numerator, temp.m_denominator);
-
-    temp.m_numerator = temp.m_numerator / gcd;
-    temp.m_denominator = temp.m_denominator / gcd;
-
+    if (gcd > 0) {
+        temp.m_numerator = temp.m_numerator / gcd;
+        temp.m_denominator = temp.m_denominator / gcd;
+    }
     return temp;
 }
 
@@ -127,10 +127,10 @@ const Fraction Fraction::operator+(const int number) const {
     temp.m_denominator = this->m_denominator;
 
     int gcd = temp.gcd(temp.m_numerator, temp.m_denominator);
-
-    temp.m_numerator = temp.m_numerator / gcd;
-    temp.m_denominator = temp.m_denominator / gcd;
-
+    if (gcd > 0) {
+        temp.m_numerator = temp.m_numerator / gcd;
+        temp.m_denominator = temp.m_denominator / gcd;
+    }
     return temp;
 }
 
@@ -140,10 +140,10 @@ const Fraction Fraction::operator-(const int number) const {
     temp.m_denominator = this->m_denominator;
 
     int gcd = temp.gcd(temp.m_numerator, temp.m_denominator);
-
-    temp.m_numerator = temp.m_numerator / gcd;
-    temp.m_denominator = temp.m_denominator / gcd;
-
+    if (gcd > 0) {
+        temp.m_numerator = temp.m_numerator / gcd;
+        temp.m_denominator = temp.m_denominator / gcd;
+    }
     return temp;
 }
 
@@ -153,10 +153,10 @@ const Fraction Fraction::operator*(const int number) const {
     temp.m_denominator = this->m_denominator;
 
     int gcd = temp.gcd(temp.m_numerator, temp.m_denominator);
-
-    temp.m_numerator = temp.m_numerator / gcd;
-    temp.m_denominator = temp.m_denominator / gcd;
-
+    if (gcd > 0) {
+        temp.m_numerator = temp.m_numerator / gcd;
+        temp.m_denominator = temp.m_denominator / gcd;
+    }
     return temp;
 }
 
@@ -170,10 +170,10 @@ const Fraction Fraction::operator/(const int number) const {
         temp.m_denominator = this->m_denominator * number;
 
         int gcd = temp.gcd(temp.m_numerator, temp.m_denominator);
-
-        temp.m_numerator = temp.m_numerator / gcd;
-        temp.m_denominator = temp.m_denominator / gcd;
-
+        if (gcd > 0) {
+            temp.m_numerator = temp.m_numerator / gcd;
+            temp.m_denominator = temp.m_denominator / gcd;
+        }
         return temp;
     }
 }
@@ -279,9 +279,10 @@ const Fraction Fraction::operator^(const int n) const {
     temp.m_numerator = static_cast<int>(pow(this->m_numerator, n));
     temp.m_denominator = static_cast<int>(pow(this->m_denominator, n));
     int gcd = temp.gcd(temp.m_numerator, temp.m_denominator);
-
-    temp.m_numerator = temp.m_numerator / gcd;
-    temp.m_denominator = temp.m_denominator / gcd;
+    if (gcd > 0) {
+        temp.m_numerator = temp.m_numerator / gcd;
+        temp.m_denominator = temp.m_denominator / gcd;
+    }
     return temp;
 }
 
@@ -331,10 +332,10 @@ const Fraction operator-(const int &number, const Fraction &fraction) {
     temp.m_denominator = fraction.m_denominator;
 
     int gcd = temp.gcd(temp.m_numerator, temp.m_denominator);
-
-    temp.m_numerator = temp.m_numerator / gcd;
-    temp.m_denominator = temp.m_denominator / gcd;
-
+    if (gcd > 0) {
+        temp.m_numerator = temp.m_numerator / gcd;
+        temp.m_denominator = temp.m_denominator / gcd;
+    }
     return temp;
 }
 
@@ -354,10 +355,10 @@ const Fraction operator/(const int &number, const Fraction &fraction) {
         temp.m_denominator = fraction.m_numerator;
 
         int gcd = temp.gcd(temp.m_numerator, temp.m_denominator);
-
-        temp.m_numerator = temp.m_numerator / gcd;
-        temp.m_denominator = temp.m_denominator / gcd;
-
+        if (gcd > 0) {
+            temp.m_numerator = temp.m_numerator / gcd;
+            temp.m_denominator = temp.m_denominator / gcd;
+        }
         return temp;
     }
 }
